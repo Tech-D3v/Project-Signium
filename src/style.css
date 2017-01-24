@@ -1,0 +1,119 @@
+.namelink
+{
+	height: 11.5em;
+	width: 8em;
+	cursor: pointer;
+    border-radius: 20px;
+    border: 5px solid;
+    padding: 5px;
+    margin-top: 0.5em; 
+    font-size: 15px;
+    font-family: sans-serif;
+    font-weight: bolder;
+    -webkit-box-shadow: 6px 6px 7px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 6px 6px 7px 0px rgba(0,0,0,0.75);
+	box-shadow: 6px 6px 7px 0px rgba(0,0,0,0.75);
+	text-align: center;
+}
+.namelinkcontent
+{
+	position: relative;
+	top: 5em;
+	text-align: center;
+	width: 100%;
+}
+.namelinkyeargroup
+{
+	position: relative;
+	top: 5em;
+	color: #808080;
+	text-align: center;
+	width: 100%;
+}
+
+a:link, a:visited
+{
+	text-decoration: none;
+	color: #808080;
+}
+a:hover, a:active
+{
+	/*background-color: #44C9FF;
+	color: white;*/
+	text-decoration: none;
+	color: #808080;
+}
+.btn-selector
+{
+	color: #FFFFFF;
+	width: 100%; 
+	margin-top: 1%;
+	height: 3em;
+}
+.btn-selector:hover, .btn-selector:active
+{
+	background-color: #FFFFFF;
+}
+
+.selected
+{
+	position: absolute;
+	left: 48%;
+	top: 25%;
+	font-size: 25px;
+	color: #33FF33;
+}
+.selectedcallover
+{
+	position: absolute;
+	left: 55%;
+	top: 25%;
+	font-size: 25px;
+	color: #33FF33;
+}
+.notselectedcallover
+{
+	position: absolute;
+	left: 35%;
+	top: 25%;
+	font-size: 25px;
+	color: #FF3333;
+}
+.editlinks
+{
+	position: absolute;
+	left: 45%;
+	bottom: 80%;
+}
+.deletelinks
+{
+	position: absolute;
+	left: 65%;
+	bottom: 80%;
+}
+body
+{
+	background-color: #EEEEEE;
+}
+.datetime
+{
+	position: absolute;
+	left: 20%;
+	color: #D3D3D3;
+}
+.time
+{
+	position: absolute;
+	bottom: 65%;
+}
+.date
+{
+	position: absolute;
+	bottom: 55%;
+}
+.btn-callover
+{
+	padding-top: 2em;
+	padding-bottom: 2em;
+}
+
