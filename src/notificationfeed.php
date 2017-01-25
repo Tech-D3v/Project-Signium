@@ -1,7 +1,7 @@
 <?php
-	require_once "php/cdn.php";
-	require_once "php/session.php";
-	require_once "navbar.php";
+    require_once "php/cdn.php";
+    require_once "php/session.php";
+    require_once "navbar.php";
 
 ?>
 <!DOCTYPE html>
