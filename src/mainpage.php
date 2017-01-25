@@ -3,20 +3,21 @@
 <html lang="en">
   <head>
     <?php
-    	require_once "php/session.php";
-		require_once "php/cdn.php";
-		require_once "php/database.php";
-		if($adminUser == true && $userHouse == "unselected") { header("location: adminpage.php"); }
-		echo "<input id='getUsername' type='hidden' value=".$userName.">";
-		$_SESSION["signinpage"] = false;	
-	?>
-	
-	<script src="socket_server/node_modules/socket.io/node_modules/socket.io-client/socket.io.js"></script>
-	<script src="js/socket.js"></script>
-	<script src="js/drawscript.js"></script>
+        require_once "php/session.php";
+        require_once "php/cdn.php";
+        require_once "php/database.php";
+        if ($adminUser == true && $userHouse == "unselected") {
+            header("location: adminpage.php");
+        }
+        echo "<input id='getUsername' type='hidden' value=".$userName.">";
+        $_SESSION["signinpage"] = false;
+    ?>
 
+	<script src="socket_server/node_modules/socket.io/node_modules/socket.io-client/socket.io.js"></script>
+  <script src="js/config.js"></script>
+	<script src="js/drawscript.js"></script>
 	<script>
-	var socket = io.connect("http://10.11.0.23:8081");
+	var socket = io.connect(CONFIG_NODE_IP);
      $(document).ready(function() {
     $(".dropdown-toggle").dropdown();
  	});
@@ -51,7 +52,7 @@
 		}
 	});
 	$.ajax({
-  method: 'get',
+  method: 'post',
   url: 'php/download.php',
   dataType: 'json',
 	success: function (data) {
@@ -66,7 +67,7 @@
     	var yeargroupChecked = new Array();
     $(".checkboxlocation").each(function(checkIndex, checkValue)
     {
-    		
+
     		if($(checkValue).is(":checked"))
     		{
     			var checkLocation = $(checkValue).val();
@@ -76,7 +77,7 @@
     	});
     $(".checkboxyeargroup").each(function(checkIndex, checkValue)
     {
-    		
+
     		if($(checkValue).is(":checked"))
     		{
     			var checkLocation = $(checkValue).val();
@@ -85,28 +86,28 @@
 
     	});
     		redrawCriteria(boxChecked, yeargroupChecked);
- 
+
  }
 
 
 
 </script>
-	
+
   </head>
 
 
   <body>
-  
+
   <?php
-		require_once "navbar.php";
+        require_once "navbar.php";
   ?>
   <div class="container-fluid">
 	<div class="container pull-left"  style="width: 80%;">
 		<div class="cardspace" id="cardspace">
 		<script>
-		var house = "<?php 
-		echo $userHouse;
-	?>";
+		var house = "<?php
+        echo $userHouse;
+    ?>";
 			socket.emit("redraw", house);
 
 		</script>
@@ -119,13 +120,12 @@
 				<button class="btn btn-default" onclick="$('#criteriaModal').collapse('toggle');" style="width:100%;">Filter</button>
 				<div id="criteriaModal" class="collapse">
 					<div class="row">
-	       			 <?php 
-	       			 	$locationsList = DB::query("SELECT * FROM locations");
-	       			 	foreach($locationsList as $row)
-	       			 	{
-	       			 		echo '<div class="col-sm-4"><input type="checkbox" onclick="updateSelectors();" value="'.$row["Location"].'" class="checkboxlocation" id="checkbox'.$row["Location"].'"/>'.$row["Location"]."</div>";
-	       			 	}
-	       			  ?>
+	       			 <?php
+                           $locationsList = DB::query("SELECT * FROM locations");
+                           foreach ($locationsList as $row) {
+                               echo '<div class="col-sm-4"><input type="checkbox" onclick="updateSelectors();" value="'.$row["Location"].'" class="checkboxlocation" id="checkbox'.$row["Location"].'"/>'.$row["Location"]."</div>";
+                           }
+                         ?>
 	       			  </div>
 	       			  <div class="row">
 	       			  <div class="col-sm-4"><input type="checkbox" value="3rd" onclick="updateSelectors();" class="checkboxyeargroup" id="checkbox3rd"/>Third Form</div>
@@ -171,10 +171,6 @@
 			 <div class="buttonspace"></div>
 			</div>
 		</div>
-		
+
   </body>
 </html>
-	
-
-
-

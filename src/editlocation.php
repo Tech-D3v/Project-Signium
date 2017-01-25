@@ -6,23 +6,19 @@
   $array = null;
   $names = DB::query('SELECT * FROM locations');
   $disabled = "";
-  foreach($names as $row)
-  {
-    if($row["ID"] == $_GET['id'])
-    {
-      $array = $row;
-      if($row["Location"] == "In House" || $row["Location"] == "Lessons")
-      {
-        $disabled = "readonly";
+  foreach ($names as $row) {
+      if ($row["ID"] == $_GET['id']) {
+          $array = $row;
+          if ($row["Location"] == "In House" || $row["Location"] == "Lessons") {
+              $disabled = "readonly";
+          }
       }
-    }
-
   }
 ?>
 <!DOCTYPE html>
 <html>
   <head>
- 
+
   </head>
   <body>
   <div class="container">
@@ -36,7 +32,7 @@
       </div>
       <div class="form-group">
         <label class="control-label" for="colour">Pick a Colour:</label>
-        <div class=""> 
+        <div class="">
           <input type="button" class=" form-control jscolor {valueElement: 'color_value'}" value="Pick a Colour"/>
           <input type="text" style="visibility: hidden;" name="colour" id="color_value" value="<?php echo $array["Colour"]; ?>" />
         </div>
@@ -45,9 +41,15 @@
         <label class="control-label" for="heading">Under Which Heading</label>
           <div class="">
           <select class="form-control" id="heading" name="heading" <?php echo $disabled; ?>>
-            <option <?php if($array["Heading"] == "In College"){ echo 'selected="selected"'; } ?> >In College</option>
-            <option <?php if($array["Heading"] == "Out of College"){ echo 'selected="selected"'; } ?>>Out of College</option>
-            <option <?php if($array["Heading"] == "No Group"){ echo 'selected="selected"'; } ?>>No Group</option>
+            <option <?php if ($array["Heading"] == "In College") {
+    echo 'selected="selected"';
+} ?> >In College</option>
+            <option <?php if ($array["Heading"] == "Out of College") {
+    echo 'selected="selected"';
+} ?>>Out of College</option>
+            <option <?php if ($array["Heading"] == "No Group") {
+    echo 'selected="selected"';
+} ?>>No Group</option>
           </select>
         </div>
       </div>
@@ -57,7 +59,15 @@
           <input type="range" min="1" max="5" class="form-control" id="height" name="height" value="<?php echo $array["Height"]; ?>" />
         </div>
       </div>-->
-      <div class="form-group"> 
+      <div class="form-group">
+        <label class="control-label" for="bottomrow">Place on Bottom Row at Signing In Page?</label>
+        <div class="">
+          <input type="checkbox" id="bottomrow" name="bottomrow" value="true" <?php if ($array["BottomSpace"] == "true") {
+    echo 'checked="checked"';
+} ?> />
+        </div>
+      </div>
+      <div class="form-group">
         <div class="">
           <input type="submit" value="Finish" class="btn btn-default"/>
         </div>
