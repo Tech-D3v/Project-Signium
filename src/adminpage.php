@@ -3,10 +3,10 @@
 <html lang="en">
   <head>
     <?php
-		require_once "php/cdn.php";
-		require_once "php/database.php";
-		require_once "php/houselist.php";
-		?>
+        require_once "php/cdn.php";
+        require_once "php/database.php";
+        require_once "php/houselist.php";
+        ?>
 	<script src="socket_server/node_modules/socket.io/node_modules/socket.io-client/socket.io.js"></script>
 		<script src="js/socket.js"></script>
 	<script>
@@ -25,7 +25,7 @@
 				document.getElementById("inhouse&" + house.House).innerHTML = "In House Currently: " + finalNumber[1];
 				increment++;
 			});
-			
+
 		});
      $(document).ready(function() {
     $(".dropdown-toggle").dropdown();
@@ -37,25 +37,23 @@
 
   <body>
   <?php
-		require_once "navbaradmin.php";
+        require_once "navbaradmin.php";
   ?>
   <div class="container-fluid">
 	<div class="container pull-left"  style="width: 100%;">
 		<div>
-		 <?php 
-		 	
-			$database = new MeekroDB("localhost", "root", "", "users");
-			$houses = $database->query("SELECT * FROM houselist ORDER BY House");
-			foreach($houses as $house)
-			{
-				echo '<div class="panel panel-default adminpanel"><div class="panel-heading"><h3>'.ucfirst($house["House"]).'</h3></div><div class="panel-content adminpanelcontent"><p class="studentcount adminpanelcontent">Student Count: '.$house["StudentCount"].'</p><p class="inhousecount" id="inhouse&'.$house["House"].'">In House Currently: </p><p class="colours">Colours: </p><div class="colour-1" style="background-color:'.$house["HouseColour_1"].'"><br/><a data-toggle="modal" href="#deletemodal'.$house["ID"].'" class="deleteadmin"><span class="glyphicon glyphicon-trash"></span></a></div>'; /*<a href="edithouse.php?id='.$house["ID"].'" class="editadmin"><span class="glyphicon glyphicon-edit"></span></a>*/
-				if($house["BoolSecondColour"] == true)
-				{
-					echo '<div class="colour-2" style="background-color:'.$house["HouseColour_2"].'"></div>';
-				}
+		 <?php
 
-				echo '<br/><p class="usercount">User Count: '.$house["UserCount"].'</p><br/></div></div>';
-				echo '<div id="deletemodal'.$house["ID"].'" class="modal fade" role="dialog">
+            $database = new MeekroDB("localhost", "root", "", "users");
+            $houses = $database->query("SELECT * FROM houselist ORDER BY House");
+            foreach ($houses as $house) {
+                echo '<div class="panel panel-default adminpanel"><div class="panel-heading"><h3>'.ucfirst($house["House"]).'</h3></div><div class="panel-content adminpanelcontent"><p class="studentcount adminpanelcontent">Student Count: '.$house["StudentCount"].'</p><p class="inhousecount" id="inhouse&'.$house["House"].'">In House Currently: </p><p class="colours">Colours: </p><div class="colour-1" style="background-color:'.$house["HouseColour_1"].'"><br/><a data-toggle="modal" href="#deletemodal'.$house["ID"].'" class="deleteadmin"><span class="glyphicon glyphicon-trash"></span></a></div>'; /*<a href="edithouse.php?id='.$house["ID"].'" class="editadmin"><span class="glyphicon glyphicon-edit"></span></a>*/
+                if ($house["BoolSecondColour"] == true) {
+                    echo '<div class="colour-2" style="background-color:'.$house["HouseColour_2"].'"></div>';
+                }
+
+                echo '<br/><p class="usercount">User Count: '.$house["UserCount"].'</p><br/></div></div>';
+                echo '<div id="deletemodal'.$house["ID"].'" class="modal fade" role="dialog">
 	  				<div class="modal-dialog">
 	   					<div class="modal-content">
 	     					<div class="modal-header">
@@ -73,13 +71,9 @@
 
 	  			</div>
 				</div>';
-			}
-		  ?>
+            }
+          ?>
 		</div>
 	</div>
   </body>
 </html>
-	
-
-
-
