@@ -5,12 +5,24 @@
             require_once "php/cdn.php";
         ?>
 		<script src="socket_server/node_modules/socket.io/node_modules/socket.io-client/socket.io.js"></script>
-		<script src="js/socket.js"></script>
+		<script src="js/config.js"></script>
+		<script src="js/calloverscript.js"></script>
+		<style>
+			.btn-finish
+			{
+				width: 100%;
+			}
+		</style>
 	</head>
 	<body>
 		<?php
             require_once "navbar.php";
         ?>
-
+				<div class="container">
+				<button class="btn btn-success btn-finish" onclick="uploadData();">Finish</button>
+			<ul class="list-group calloverlist">
+			</ul>
+			<button class="btn btn-success btn-finish" onclick="uploadData();">Finish</button>
+		</div>
 	</body>
 </html>
