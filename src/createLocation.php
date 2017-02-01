@@ -19,7 +19,7 @@
       </div>
       <div class="form-group">
         <label class="control-label" for="colour">Pick a Colour:</label>
-        <div class=""> 
+        <div class="">
           <input type="button" class=" form-control jscolor {valueElement: 'color_value'}" value="Pick a Colour"/>
           <input type="text" style="visibility: hidden;" name="colour" id="color_value" />
         </div>
@@ -40,7 +40,13 @@
           <input type="range" min="1" max="5" class="form-control" id="height" name="height"  />
         </div>
       </div>-->
-      <div class="form-group"> 
+      <div class="form-group">
+        <label class="control-label" for="bottomrow">Place on Bottom Row at Signing In Page?</label>
+        <div class="">
+          <input type="checkbox" id="bottomrow" name="bottomrow" value = "true"/>
+        </div>
+      </div>
+      <div class="form-group">
         <div class="">
           <input type="submit" value="Finish" class="btn btn-default"/>
         </div>

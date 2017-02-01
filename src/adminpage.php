@@ -8,9 +8,9 @@
         require_once "php/houselist.php";
         ?>
 	<script src="socket_server/node_modules/socket.io/node_modules/socket.io-client/socket.io.js"></script>
-		<script src="js/socket.js"></script>
+  <script src="js/config.js"></script>
 	<script>
-	var socket = io.connect("http://10.11.0.23:8081");
+	var socket = io.connect(CONFIG_NODE_IP);
 	socket.emit('inhouse_number_update');
 	socket.on('update_inhouse_number', function(number)
 		{
@@ -43,6 +43,7 @@
 	<div class="container pull-left"  style="width: 100%;">
 		<div>
 		 <?php
+            require_once 'php/dependencies/meekrodb.2.3.class.php';
 
             $database = new MeekroDB("localhost", "root", "", "users");
             $houses = $database->query("SELECT * FROM houselist ORDER BY House");

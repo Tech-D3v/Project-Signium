@@ -1,4 +1,4 @@
-var socket = io.connect("http://10.11.0.23:8081");
+var socket = io.connect(CONFIG_NODE_IP);
 socket.emit("redraw");
 var house = "";
 var url = "wellingtonsigninsystem";
@@ -30,8 +30,7 @@ function updateSelection(id) {
 
 function updateServerCustom() {
     var text = $("#otherinput").val();
-    updateServer(text, house, "#FFFFFF");
-    window.location.reload();
+    updateServer(text, house, "#000000");
 }
 
 function updateServer(data, house, colour) {
@@ -153,7 +152,62 @@ socket.on("redraw-colours", function(fHouse) {
 socket.on("redraw", function(fHouse) {
     if (fHouse == house) {
 
-
+function select(yeargroup) {
+    var IDs = $(".namelink").map(function() {
+        return this.id;
+    }).get();
+    var increment = 0;
+    $('.namelinkyeargroup').each(function() {
+        switch (yeargroup) {
+            case "3rd":
+                if (String($(this).children().attr('id')).valueOf() == "yeargroup3rd") {
+                    $('#selected' + IDs[increment]).css("visibility", "visible");
+                    selectedIDS.push(IDs[increment]);
+                }
+                break;
+            case "4th":
+                if (String($(this).children().attr('id')).valueOf() == "yeargroup4th") {
+                    $('#selected' + IDs[increment]).css("visibility", "visible");
+                    selectedIDS.push(IDs[increment]);
+                }
+                break;
+            case "5th":
+                if (String($(this).children().attr('id')).valueOf() == "yeargroup5th") {
+                    $('#selected' + IDs[increment]).css("visibility", "visible");
+                    selectedIDS.push(IDs[increment]);
+                }
+                break;
+            case "LVIth":
+                if (String($(this).children().attr('id')).valueOf() == "yeargroupLVIth") {
+                    $('#selected' + IDs[increment]).css("visibility", "visible");
+                    selectedIDS.push(IDs[increment]);;
+                }
+                break;
+            case "UVIth":
+                if (String($(this).children().attr('id')).valueOf() == "yeargroupUVIth") {
+                    $('#selected' + IDs[increment]).css("visibility", "visible");
+                    selectedIDS.push(IDs[increment]);
+                }
+                break;
+        }
+        increment++;
+    });
+}
+socket.on("redraw-colours", function(fHouse) {
+    if (fHouse == house) {
+        $.ajax({
+            method: 'get',
+            url: 'php/download.php',
+            dataType: 'json',
+            success: function(data) {
+                updateColours(data);
+            }
+        });
+        deselect();
+    }
+});
+socket.on("redraw", function(fHouse) {
+    if (fHouse == house) {
         $.ajax({
             url: "php/draw.php",
             method: "get",
@@ -186,6 +240,7 @@ function setUpButtons(maxHeight = parseInt($(".cardspace").css("height"))) {
 
 
 
+
 function setUpGrid() {
     var totalCards = $(".name").size();
     var maxWidth = 130;
@@ -215,7 +270,6 @@ function setUpGrid() {
             n = intMaxN - i;
         }
     });
-
     var finalSize = minWidth;
     var finalMargin = minMargin;
     var finalSideMargin = getSideMargin(screenWidth, finalSize, finalMargin, n);
@@ -301,6 +355,8 @@ function updateColours(data) {
         });
     });
 }
+
+                 
 $(document).ready(function() {
     $(window).resize(function() {
         setUpButtons();
