@@ -61,8 +61,6 @@ function sendData(data, ids, userName, house) {
             },
             success: function(result) {
                 var data = result;
-                console.log(result);
-
                 for (i in data) {
                     var date = data[i].Date;
                     var time = data[i].Time;
@@ -124,7 +122,7 @@ function select(yeargroup) {
             case "LVIth":
                 if (String($(this).children().attr('id')).valueOf() == "yeargroupLVIth") {
                     $('#selected' + IDs[increment]).css("visibility", "visible");
-                    selectedIDS.push(IDs[increment]);;
+                    selectedIDS.push(IDs[increment]);
                 }
                 break;
             case "UVIth":
@@ -146,6 +144,63 @@ socket.on("redraw-colours", function(fHouse) {
             success: function(data) {
                 updateColours(data);
 
+            }
+        });
+        deselect();
+    }
+});
+socket.on("redraw", function(fHouse) {
+    if (fHouse == house) {
+
+function select(yeargroup) {
+    var IDs = $(".namelink").map(function() {
+        return this.id;
+    }).get();
+    var increment = 0;
+    $('.namelinkyeargroup').each(function() {
+        switch (yeargroup) {
+            case "3rd":
+                if (String($(this).children().attr('id')).valueOf() == "yeargroup3rd") {
+                    $('#selected' + IDs[increment]).css("visibility", "visible");
+                    selectedIDS.push(IDs[increment]);
+                }
+                break;
+            case "4th":
+                if (String($(this).children().attr('id')).valueOf() == "yeargroup4th") {
+                    $('#selected' + IDs[increment]).css("visibility", "visible");
+                    selectedIDS.push(IDs[increment]);
+                }
+                break;
+            case "5th":
+                if (String($(this).children().attr('id')).valueOf() == "yeargroup5th") {
+                    $('#selected' + IDs[increment]).css("visibility", "visible");
+                    selectedIDS.push(IDs[increment]);
+                }
+                break;
+            case "LVIth":
+                if (String($(this).children().attr('id')).valueOf() == "yeargroupLVIth") {
+                    $('#selected' + IDs[increment]).css("visibility", "visible");
+                    selectedIDS.push(IDs[increment]);;
+                }
+                break;
+            case "UVIth":
+                if (String($(this).children().attr('id')).valueOf() == "yeargroupUVIth") {
+                    $('#selected' + IDs[increment]).css("visibility", "visible");
+                    selectedIDS.push(IDs[increment]);
+                }
+                break;
+        }
+        increment++;
+    });
+}
+socket.on("redraw-colours", function(fHouse) {
+    if (fHouse == house) {
+        $.ajax({
+            method: 'get',
+            url: 'php/download.php',
+            dataType: 'json',
+            success: function(data) {
+                updateColours(data);
             }
         });
         deselect();
@@ -185,6 +240,7 @@ function setUpButtons(maxHeight = parseInt($(".cardspace").css("height"))) {
 
 
 
+
 function setUpGrid() {
     var totalCards = $(".name").size();
     var maxWidth = 130;
@@ -214,7 +270,6 @@ function setUpGrid() {
             n = intMaxN - i;
         }
     });
-
     var finalSize = minWidth;
     var finalMargin = minMargin;
     var finalSideMargin = getSideMargin(screenWidth, finalSize, finalMargin, n);
@@ -243,8 +298,6 @@ function setUpGrid() {
         bottom = row === (numRows - 1);
         setUpCardSize(cardSet[i], left, right, top, bottom, finalSize, finalMargin, finalSideMargin);
     }
-
-    setUpButtons();
 }
 
 function setUpCardSize(card, left, right, top, bottom, size, margin, side) {
@@ -270,8 +323,8 @@ function getSideMargin(screenWidth, boxWidth, margin, n) {
     return Math.floor((screenWidth - (n * boxWidth) - ((n - 1) * margin)) / 2);
 }
 
-
 function updateColours(data) {
+    setUpButtons();
     var val1 = Array();
     var val2 = Array();
     $(document).ready(function() {
@@ -302,14 +355,14 @@ function updateColours(data) {
         });
     });
 }
+
+                 
 $(document).ready(function() {
     $(window).resize(function() {
         setUpButtons();
         setUpGrid();
     });
-
-
-    setUpGrid();
-    setUpButtons();
-
+    $(window).load(function() {
+        setUpButtons();
+    });
 });

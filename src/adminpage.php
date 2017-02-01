@@ -44,6 +44,7 @@
 		<div>
 		 <?php
             require_once 'php/dependencies/meekrodb.2.3.class.php';
+
             $database = new MeekroDB("localhost", "root", "", "users");
             $houses = $database->query("SELECT * FROM houselist ORDER BY House");
             foreach ($houses as $house) {
