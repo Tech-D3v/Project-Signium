@@ -93,65 +93,6 @@ function deselect() {
     });
     selectedIDS = [];
 }
-
-function select(yeargroup) {
-    var IDs = $(".namelink").map(function() {
-        return this.id;
-    }).get();
-    var increment = 0;
-    $('.namelinkyeargroup').each(function() {
-        switch (yeargroup) {
-            case "3rd":
-                if (String($(this).children().attr('id')).valueOf() == "yeargroup3rd") {
-                    $('#selected' + IDs[increment]).css("visibility", "visible");
-                    selectedIDS.push(IDs[increment]);
-                }
-                break;
-            case "4th":
-                if (String($(this).children().attr('id')).valueOf() == "yeargroup4th") {
-                    $('#selected' + IDs[increment]).css("visibility", "visible");
-                    selectedIDS.push(IDs[increment]);
-                }
-                break;
-            case "5th":
-                if (String($(this).children().attr('id')).valueOf() == "yeargroup5th") {
-                    $('#selected' + IDs[increment]).css("visibility", "visible");
-                    selectedIDS.push(IDs[increment]);
-                }
-                break;
-            case "LVIth":
-                if (String($(this).children().attr('id')).valueOf() == "yeargroupLVIth") {
-                    $('#selected' + IDs[increment]).css("visibility", "visible");
-                    selectedIDS.push(IDs[increment]);
-                }
-                break;
-            case "UVIth":
-                if (String($(this).children().attr('id')).valueOf() == "yeargroupUVIth") {
-                    $('#selected' + IDs[increment]).css("visibility", "visible");
-                    selectedIDS.push(IDs[increment]);
-                }
-                break;
-        }
-        increment++;
-    });
-}
-socket.on("redraw-colours", function(fHouse) {
-    if (fHouse == house) {
-        $.ajax({
-            method: 'get',
-            url: 'php/download.php',
-            dataType: 'json',
-            success: function(data) {
-                updateColours(data);
-
-            }
-        });
-        deselect();
-    }
-});
-socket.on("redraw", function(fHouse) {
-    if (fHouse == house) {
-
 function select(yeargroup) {
     var IDs = $(".namelink").map(function() {
         return this.id;
