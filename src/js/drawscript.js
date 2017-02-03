@@ -1,5 +1,4 @@
 var socket = io.connect(CONFIG_NODE_IP);
-socket.emit("redraw");
 var house = "";
 var url = "wellingtonsigninsystem";
 $.ajax({
@@ -12,6 +11,53 @@ $.ajax({
 if (house == "" || house == null) {
     house = $("#getHouse").val();
 }
+
+var incompatible = false;
+
+if (Function('/*@cc_on return document.documentMode===10@*/')()) {
+    incompatible = true;
+} else if (!socket.connected) {
+    incompatible = true;
+}
+
+function redraw() {
+    if (incompatible) {
+        $.ajax({
+            url: "php/draw.php",
+            method: "get",
+            success: function(data) {
+                $(".cardspace").html(data);
+                setUpGrid();
+            }
+        });
+        $.ajax({
+            url: "php/updatebuttons.php",
+            method: "get",
+            success: function(data) {
+                $(".buttonspace").html(data);
+                setUpButtons();
+            }
+        });
+        redrawColours();
+    }
+}
+
+function redrawColours() {
+    if (incompatible) {
+        $.ajax({
+            method: 'get',
+            url: 'php/download.php',
+            dataType: 'json',
+            success: function(data) {
+                updateColours(data);
+            }
+        });
+        deselect();
+    }
+    setUpButtons();
+}
+
+
 var selectedIDS = [];
 
 function updateSelection(id) {
@@ -79,6 +125,7 @@ function sendData(data, ids, userName, house) {
                 }
                 socket.emit('inhouse_number_update');
                 socket.emit('redraw-colours', house);
+                redrawColours();
             }
         });
     });
@@ -93,6 +140,7 @@ function deselect() {
     });
     selectedIDS = [];
 }
+
 function select(yeargroup) {
     var IDs = $(".namelink").map(function() {
         return this.id;
@@ -265,7 +313,6 @@ function getSideMargin(screenWidth, boxWidth, margin, n) {
 }
 
 function updateColours(data) {
-    setUpButtons();
     var val1 = Array();
     var val2 = Array();
     $(document).ready(function() {
@@ -297,12 +344,16 @@ function updateColours(data) {
     });
 }
 
-                 
+
 $(document).ready(function() {
+    socket.emit("redraw");
+    redraw();
+    setUpButtons();
     $(window).resize(function() {
         setUpButtons();
         setUpGrid();
     });
+
     $(window).load(function() {
         setUpButtons();
     });
