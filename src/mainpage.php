@@ -16,6 +16,7 @@
 	<script src="socket_server/node_modules/socket.io/node_modules/socket.io-client/socket.io.js"></script>
   <script src="js/config.js"></script>
 	<script src="js/drawscript.js"></script>
+  <link rel="stylesheet" href="css/style.css" type="text/css"/>
 	<script>
 	var socket = io.connect(CONFIG_NODE_IP);
      $(document).ready(function() {
