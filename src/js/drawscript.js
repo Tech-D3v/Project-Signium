@@ -14,7 +14,7 @@ if (house == "" || house == null) {
 
 
 function drawLoadingIcon(id) {
-    $(id).toggleClass('ajax-loading-icon');
+    $(id).html('<div class="ajax-loading-icon"></div>');
 }
 
 function redraw() {
@@ -25,7 +25,6 @@ function redraw() {
             drawLoadingIcon(".cardspace");
         },
         success: function(data) {
-            drawLoadingIcon(".cardspace");
             $(".cardspace").html(data);
             setUpGrid();
             redrawColours();
@@ -35,9 +34,8 @@ function redraw() {
                 beforeSend: function() {
                     drawLoadingIcon(".buttonspace");
                 },
-                success: function(data) {
-                    drawLoadingIcon(".buttonspace");
-                    $(".buttonspace").html(data);
+                success: function(data_1) {
+                    $(".buttonspace").html(data_1);
                     setUpButtons();
                 }
             });

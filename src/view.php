@@ -28,9 +28,7 @@
 		var house = "<?php
         echo $_GET['house'];
     ?>";
-	console.log(house);
 	$("#getHouse").val(house);
-			socket.emit("redraw", house);
 			</script>
 		</div>
 	<div id="bottomcheck">
@@ -71,7 +69,6 @@
 		</div>
 		</div>
 			<div class="buttonspace"></div>
-
 			</div>
 
 		</div>
