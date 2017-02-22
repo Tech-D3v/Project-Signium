@@ -1,3 +1,22 @@
+.ajax-loading-icon {
+    border: 16px solid #f3f3f3;
+    border-top: 16px solid #3498db;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+    align-self: center;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 .name {
     display: inline-block;
 }
@@ -132,33 +151,37 @@ a:hover, a:active {
     right: 25%;
 }
 
-
-}
 body {
     background-color: #EEEEEE;
 }
+
 .datetime {
     position: absolute;
     top: 15%;
     bottom: 70%;
     color: #D3D3D3;
 }
+
 .time {
     margin-left: 0;
 }
+
 .date {
     margin-left: 0;
     margin-top: 13%;
 }
+
 .btn-callover {
     padding-top: 2em;
     padding-bottom: 2em;
     float: right;
     position: absolute;
 }
+
 #callover-reset {
     top: 400%;
 }
+
 .adminpanel {
     width: 100%;
     height: 10em;
@@ -166,25 +189,31 @@ body {
     -moz-box-shadow: 6px 6px 7px 0px rgba(0, 0, 0, 0.75);
     box-shadow: 6px 6px 7px 0px rgba(0, 0, 0, 0.75);
 }
+
 .adminpanel h3 {
     padding-left: 25px;
 }
+
 .adminpanelcontent {
     position: relative;
     height: 12em;
 }
+
 .adminpanelcontent p {
     font-size: 16px;
     font-family: sans-serif;
 }
+
 .studentcount {
     position: absolute;
 }
+
 .colours {
     position: absolute;
     left: 49.2%;
     top: 2.5%;
 }
+
 .colour-1 {
     position: absolute;
     left: 53%;
@@ -192,6 +221,7 @@ body {
     height: 30px;
     border: 3px solid black;
 }
+
 .colour-2 {
     position: absolute;
     left: 55%;
@@ -199,16 +229,19 @@ body {
     height: 30px;
     border: 3px solid black;
 }
+
 .inhousecount {
     position: absolute;
     left: 74%;
 }
+
 .editadmin {
     position: absolute;
     left: 58em;
     top: 2em;
     bottom: 0%;
 }
+
 .deleteadmin {
     position: absolute;
     left: 60em;

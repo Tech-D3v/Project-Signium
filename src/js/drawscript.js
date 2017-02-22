@@ -12,50 +12,51 @@ if (house == "" || house == null) {
     house = $("#getHouse").val();
 }
 
-var incompatible = false;
 
-if (Function('/*@cc_on return document.documentMode===10@*/')()) {
-    incompatible = true;
-} else if (!socket.connected) {
-    incompatible = true;
+function drawLoadingIcon(id) {
+    $(id).toggleClass('ajax-loading-icon');
 }
 
 function redraw() {
-    if (incompatible) {
-        $.ajax({
-            url: "php/draw.php",
-            method: "get",
-            success: function(data) {
-                $(".cardspace").html(data);
-                setUpGrid();
-            }
-        });
-        $.ajax({
-            url: "php/updatebuttons.php",
-            method: "get",
-            success: function(data) {
-                $(".buttonspace").html(data);
-                setUpButtons();
-            }
-        });
-        redrawColours();
-    }
+    $.ajax({
+        url: "php/draw.php",
+        method: "get",
+        beforeSend: function() {
+            drawLoadingIcon(".cardspace");
+        },
+        success: function(data) {
+            drawLoadingIcon(".cardspace");
+            $(".cardspace").html(data);
+            setUpGrid();
+            redrawColours();
+            $.ajax({
+                url: "php/updatebuttons.php",
+                method: "get",
+                beforeSend: function() {
+                    drawLoadingIcon(".buttonspace");
+                },
+                success: function(data) {
+                    drawLoadingIcon(".buttonspace");
+                    $(".buttonspace").html(data);
+                    setUpButtons();
+                }
+            });
+        }
+    });
 }
 
 function redrawColours() {
-    if (incompatible) {
-        $.ajax({
-            method: 'get',
-            url: 'php/download.php',
-            dataType: 'json',
-            success: function(data) {
-                updateColours(data);
-            }
-        });
-        deselect();
-    }
-    setUpButtons();
+    $.ajax({
+        method: 'get',
+        url: 'php/download.php',
+        dataType: 'json',
+        success: function(data) {
+            updateColours(data);
+            deselect();
+        }
+    });
 }
+
 
 
 var selectedIDS = [];
@@ -125,7 +126,6 @@ function sendData(data, ids, userName, house) {
                 }
                 socket.emit('inhouse_number_update');
                 socket.emit('redraw-colours', house);
-                redrawColours();
             }
         });
     });
@@ -184,36 +184,12 @@ function select(yeargroup) {
 }
 socket.on("redraw-colours", function(fHouse) {
     if (fHouse == house) {
-        $.ajax({
-            method: 'get',
-            url: 'php/download.php',
-            dataType: 'json',
-            success: function(data) {
-                updateColours(data);
-            }
-        });
-        deselect();
+        redrawColours();
     }
 });
 socket.on("redraw", function(fHouse) {
     if (fHouse == house) {
-        $.ajax({
-            url: "php/draw.php",
-            method: "get",
-            success: function(data) {
-                $(".cardspace").html(data);
-                setUpGrid();
-            }
-        });
-        $.ajax({
-            url: "php/updatebuttons.php",
-            method: "get",
-            success: function(data) {
-                $(".buttonspace").html(data);
-                setUpButtons();
-            }
-        });
-        socket.emit("redraw-colours", fHouse);
+        redraw();
     }
 });
 
@@ -346,15 +322,9 @@ function updateColours(data) {
 
 
 $(document).ready(function() {
-    socket.emit("redraw");
     redraw();
-    setUpButtons();
     $(window).resize(function() {
         setUpButtons();
         setUpGrid();
-    });
-
-    $(window).load(function() {
-        setUpButtons();
     });
 });
