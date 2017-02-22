@@ -1,5 +1,4 @@
 var socket = io.connect(CONFIG_NODE_IP);
-socket.emit("redraw");
 var house = "";
 var url = "wellingtonsigninsystem";
 $.ajax({
@@ -12,6 +11,54 @@ $.ajax({
 if (house == "" || house == null) {
     house = $("#getHouse").val();
 }
+
+
+function drawLoadingIcon(id) {
+    $(id).toggleClass('ajax-loading-icon');
+}
+
+function redraw() {
+    $.ajax({
+        url: "php/draw.php",
+        method: "get",
+        beforeSend: function() {
+            drawLoadingIcon(".cardspace");
+        },
+        success: function(data) {
+            drawLoadingIcon(".cardspace");
+            $(".cardspace").html(data);
+            setUpGrid();
+            redrawColours();
+            $.ajax({
+                url: "php/updatebuttons.php",
+                method: "get",
+                beforeSend: function() {
+                    drawLoadingIcon(".buttonspace");
+                },
+                success: function(data) {
+                    drawLoadingIcon(".buttonspace");
+                    $(".buttonspace").html(data);
+                    setUpButtons();
+                }
+            });
+        }
+    });
+}
+
+function redrawColours() {
+    $.ajax({
+        method: 'get',
+        url: 'php/download.php',
+        dataType: 'json',
+        success: function(data) {
+            updateColours(data);
+            deselect();
+        }
+    });
+}
+
+
+
 var selectedIDS = [];
 
 function updateSelection(id) {
@@ -93,6 +140,7 @@ function deselect() {
     });
     selectedIDS = [];
 }
+
 function select(yeargroup) {
     var IDs = $(".namelink").map(function() {
         return this.id;
@@ -136,36 +184,12 @@ function select(yeargroup) {
 }
 socket.on("redraw-colours", function(fHouse) {
     if (fHouse == house) {
-        $.ajax({
-            method: 'get',
-            url: 'php/download.php',
-            dataType: 'json',
-            success: function(data) {
-                updateColours(data);
-            }
-        });
-        deselect();
+        redrawColours();
     }
 });
 socket.on("redraw", function(fHouse) {
     if (fHouse == house) {
-        $.ajax({
-            url: "php/draw.php",
-            method: "get",
-            success: function(data) {
-                $(".cardspace").html(data);
-                setUpGrid();
-            }
-        });
-        $.ajax({
-            url: "php/updatebuttons.php",
-            method: "get",
-            success: function(data) {
-                $(".buttonspace").html(data);
-                setUpButtons();
-            }
-        });
-        socket.emit("redraw-colours", fHouse);
+        redraw();
     }
 });
 
@@ -265,7 +289,6 @@ function getSideMargin(screenWidth, boxWidth, margin, n) {
 }
 
 function updateColours(data) {
-    setUpButtons();
     var val1 = Array();
     var val2 = Array();
     $(document).ready(function() {
@@ -297,13 +320,11 @@ function updateColours(data) {
     });
 }
 
-                 
+
 $(document).ready(function() {
+    redraw();
     $(window).resize(function() {
         setUpButtons();
         setUpGrid();
-    });
-    $(window).load(function() {
-        setUpButtons();
     });
 });

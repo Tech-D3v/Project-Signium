@@ -44,6 +44,7 @@
 		url: "php/draw.php",
 		method: "get",
 		data: {criteriaarray: criteria, yeargrouparray: yeargroup},
+    beforeSend: drawLoadingIcon(".cardspace"),
 		success: function(data)
 		{
 			$(".cardspace").html(data);
@@ -108,8 +109,6 @@
 		var house = "<?php
         echo $userHouse;
     ?>";
-			socket.emit("redraw", house);
-
 		</script>
 		</div>
 
@@ -171,6 +170,5 @@
 			 <div class="buttonspace"></div>
 			</div>
 		</div>
-
   </body>
 </html>
