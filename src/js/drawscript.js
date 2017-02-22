@@ -23,6 +23,7 @@ function redraw() {
         method: "get",
         beforeSend: function() {
             drawLoadingIcon(".cardspace");
+            drawLoadingIcon(".buttonspace");
         },
         success: function(data) {
             $(".cardspace").html(data);
@@ -31,9 +32,6 @@ function redraw() {
             $.ajax({
                 url: "php/updatebuttons.php",
                 method: "get",
-                beforeSend: function() {
-                    drawLoadingIcon(".buttonspace");
-                },
                 success: function(data_1) {
                     $(".buttonspace").html(data_1);
                     setUpButtons();
