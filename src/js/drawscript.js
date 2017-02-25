@@ -1,17 +1,9 @@
 var socket = io.connect(CONFIG_NODE_IP);
 var house = "";
 var url = "wellingtonsigninsystem";
-$.ajax({
-    url: "php/gethouse.php",
-    method: "get",
-    success: function(data) {
-        house = data;
-    }
-});
 if (house == "" || house == null) {
     house = $("#getHouse").val();
 }
-
 
 function drawLoadingIcon(id) {
     $(id).html('<div class="ajax-loading-icon"></div>');

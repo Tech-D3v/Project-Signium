@@ -4,17 +4,27 @@
   <head>
     <?php
         require "php/cdn.php";
-        require "php/databaseView.php";
         if (!isset($_SESSION)) {
             session_start();
         }
         $_SESSION["signinpage"] = true;
+        $_SESSION["signinhouse"] = $_GET["house"];
+        require "php/databaseView.php";
     ?>
 	<script src="socket_server/node_modules/socket.io/node_modules/socket.io-client/socket.io.js"></script>
   <script src="js/config.js"></script>
+  <script>
+  </script>
 	<script src="js/drawscript.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<meta name="viewport" content="width=device-width, user-scalable=no">
+  <script>
+  var socket = io.connect(CONFIG_NODE_IP);
+  var house = "<?php
+      echo $_GET['house'];
+  ?>";
+$("#getHouse").val(house);
+    </script>
 	<title>Sign In Page</title>
   </head>
 
@@ -23,13 +33,7 @@
   <div class="container-fluid">
 	<div class="container pull-left"  style="width: 85%;">
 		<div class="cardspace" id="cardspace">
-		<script>
-		var socket = io.connect(CONFIG_NODE_IP);
-		var house = "<?php
-        echo $_GET['house'];
-    ?>";
-	$("#getHouse").val(house);
-			</script>
+
 		</div>
 	<div id="bottomcheck">
 			</div>
