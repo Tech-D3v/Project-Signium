@@ -1,8 +1,6 @@
 <?php
   require_once "php/database.php";
-  require_once "navbar.php";
   require_once "php/session.php";
-  require_once "php/cdn.php";
   $array = null;
   $names = DB::query('SELECT * FROM locations');
   $disabled = "";
@@ -18,7 +16,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-
+    <?php
+    require_once "navbar.php";
+    require_once "php/cdn.php";
+    ?>
+    <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
   <div class="container">

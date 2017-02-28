@@ -3,7 +3,7 @@
 <html>
   <head>
 	<?php
-	  	require_once "php/session.php";	
+	  	require_once "php/session.php";
 		require_once "php/cdn.php";
 		require_once "php/houselist.php";
 		require_once "navbaradmin.php";
@@ -16,6 +16,8 @@
 			}
 		}
 	?>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
   <div class="container">
@@ -35,25 +37,25 @@
       </div>
       <div class="form-group">
         <label class="control-label" for="housecolour">Pick a House Colour:</label>
-        <div class=""> 
+        <div class="">
           <input type="button" class=" form-control jscolor {valueElement: 'color_value'}" value="Pick a Colour"/>
           <input type="text" style="visibility: hidden;" name="housecolour_1" id="color_value" value="<?php echo $house['HouseColour_1'];?>"/>
         </div>
       </div>
       <div class="form-group">
           <label class="control-label" for="colour">Require Secondary Colour? (Check again if you require an extra colour)</label>
-          <div class=""> 
+          <div class="">
             <input type="checkbox" name="secondarycolour" value="enabled"/>
           </div>
         </div>
         <div class="form-group">
           <label class="control-label" for="housecolour_2">Pick a Secondary Colour:</label>
-          <div class=""> 
+          <div class="">
             <input type="button" class=" form-control jscolor {valueElement: 'color_value2'}" value="Pick a Colour"/>
             <input type="text" style="visibility: hidden;" name="housecolour_2" id="color_value2" value="<?php echo $house['HouseColour_2'];?>"/>
           </div>
         </div>
-      <div class="form-group"> 
+      <div class="form-group">
         <div class="">
           <input type="submit" value="Finish" class="btn btn-default"/>
         </div>

@@ -1,12 +1,15 @@
-<?php
-    require_once "php/cdn.php";
-    require_once "php/session.php";
-    require_once "navbar.php";
 
-?>
 <!DOCTYPE html>
 <html>
 	<head>
+    <?php
+        require_once "php/cdn.php";
+        require_once "php/session.php";
+        require_once "navbar.php";
+
+    ?>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 		<script>
 			$(document).ready(function(){
 				$.ajax({

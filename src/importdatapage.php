@@ -1,12 +1,15 @@
-<?php 
-	require "php/cdn.php";
-	require "navbar.php";
-	$overwrite = $_GET["overwrite"];
- ?>
+
 
 <!DOCTYPE html>
 <html>
 	<head>
+		<?php
+			require "php/cdn.php";
+			require "navbar.php";
+			$overwrite = $_GET["overwrite"];
+		 ?>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
 	<body>
 		<div class="container">
@@ -18,7 +21,7 @@
 	          			<input type="file" class="form-control" id="file" name="file" placeholder="Select File" accept=".xlsx"/>
 	        		</div>
 	      		</div>
-	      		<div class="form-group"> 
+	      		<div class="form-group">
 	        		<div class="">
 	          			<input type="submit" value="Upload" class="btn btn-default"/>
 	        	</div>

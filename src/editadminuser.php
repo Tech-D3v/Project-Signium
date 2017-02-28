@@ -22,11 +22,13 @@
     }
   }
   ?>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
 
 	<body>
 		  <div class="container">
-    <form class="form-signin" action="php/newuser.php" method="post">       
+    <form class="form-signin" action="php/newuser.php" method="post">
       <h2 class="form-signin-heading">Edit an existing user</h2>
       <div class="form-group">
       <input type="text" class="form-control" name="username" placeholder="Username" required="true" autofocus="" value="<?php echo $user["Username"]; ?>" />
@@ -38,25 +40,25 @@
       <input type="password" class="form-control" name="confirmpassword" placeholder="Confirm Password" required="true"/>
       </div>
       <div class="form-group">
-      <input type="text" class="form-control" name="name" placeholder="Preferred Name" required="true" autofocus="" value="<?php echo $user["Name"]; ?>"/>      
+      <input type="text" class="form-control" name="name" placeholder="Preferred Name" required="true" autofocus="" value="<?php echo $user["Name"]; ?>"/>
       </div>
       <div class="form-group">
        <select class="form-control" id="role" name="role">
-            <?php 
+            <?php
             if($adminUser) {
               if($user["Role"] == "ADMIN")
-                { echo '<option selected="selected">ADMIN</option>'; 
-              } 
+                { echo '<option selected="selected">ADMIN</option>';
+              }
               else
-              { 
-                echo "<option>ADMIN</option>"; 
+              {
+                echo "<option>ADMIN</option>";
                 }
               }
               ?>
             <option <?php if($user["Role"] == "HM") { echo 'selected="selected"'; } ?>>HM</option>
             <option <?php if($user["Role"] == "Tutor") { echo 'selected="selected"'; } ?> >Tutor</option>
       </select> </div><div class="form-group">
-      <?php 
+      <?php
         if($adminUser)
         {
            echo '<select class="form-control" id="house" name="house">';
@@ -71,20 +73,20 @@
             {
               echo '<option>'.ucfirst($row["House"]).'</option>';
             }
-            
+
           }
           echo '</select>';
         }
       ?>
-        
+
       </div>
 	     <br/>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Change Account</button> 
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Change Account</button>
       <input type="hidden" name="id" value="<?php echo $user['ID']; ?>" id="adminid" /><br/>
 
       <?php
       if(isset($_GET["usernametaken"]))
-      { 
+      {
         if($_GET["usernametaken"] == true)
         {
           echo '<div class="alert alert-danger fade in">
@@ -94,7 +96,7 @@
     	  }
       }
       if(isset($_GET["passwordnomatch"]))
-      { 
+      {
         if($_GET["passwordnomatch"] == true)
         {
           echo '<div class="alert alert-danger fade in">

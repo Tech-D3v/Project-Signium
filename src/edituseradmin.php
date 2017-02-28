@@ -1,15 +1,17 @@
-<?php
-	require "php/cdn.php";
-	require_once "php/session.php";
-	require_once "navbaradmin.php";
-	require_once 'php/dependencies/meekrodb.2.3.class.php';
-	$database = new MeekroDB("localhost", "root", "", "users");
-	$query_raw = $database->queryRaw("SELECT * FROM users WHERE ID=%s", $_SESSION["user_id"]);
-	$row = $query_raw->fetch_assoc();
-?>
+
 <!DOCTYPE html>
 <html>
 	<head>
+		<?php
+			require "php/cdn.php";
+			require_once "php/session.php";
+			require_once "navbaradmin.php";
+			$database = new MeekroDB("localhost", "root", "", "users");
+			$query_raw = $database->queryRaw("SELECT * FROM users WHERE ID=%s", $_SESSION["user_id"]);
+			$row = $query_raw->fetch_assoc();
+		?>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 	</head>
 	<body>
@@ -28,9 +30,9 @@
           				<input type="text" class="form-control" id="name" name="name" placeholder="Enter Preffered Name" required="true" <?php echo "value=".$row["Name"]; ?> ></input>
         			</div>
       			</div>
-      			<div class="form-group"> 
+      			<div class="form-group">
 			        <div class="">
-			          <input type="submit" value="Apply" class="btn btn-default"/> 
+			          <input type="submit" value="Apply" class="btn btn-default"/>
 			          <button class="btn btn-default" data-toggle="collapse" data-target="#changepassword" type="button">Change Password</button>
 			        </div>
       			</div>
@@ -44,7 +46,7 @@
 					echo '<div id="changepassword" class="collapse">';
 				}
 				?>
-				<form class="form-signin" action="newpassword.php" method="post">       
+				<form class="form-signin" action="newpassword.php" method="post">
       <h2 class="form-signin-heading">Change Password</h2>
       <div class="form-group">
       <input type="password" class="form-control" name="oldpassword" placeholder="Old Password" required="true" autofocus="" /></div><div class="form-group">
@@ -56,7 +58,7 @@
       </div>
       <?php
       if(isset($_GET["passwordnomatch"]))
-      { 
+      {
       if($_GET["passwordnomatch"] == true)
       {
       echo '<div class="alert alert-danger fade in">
@@ -66,7 +68,7 @@
 	}
 }
 if(isset($_GET["passwordnomatchserver"]))
-      { 
+      {
       if($_GET["passwordnomatchserver"] == true)
       {
       echo '<div class="alert alert-danger fade in">
@@ -74,8 +76,8 @@ if(isset($_GET["passwordnomatchserver"]))
         <strong>Incorrect Password</strong>Old Password Does Not Match</div>';
   }
 }
-		?>  
-    
+		?>
+
 			</div>
 			</form>
 		</div>

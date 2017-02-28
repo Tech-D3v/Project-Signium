@@ -7,6 +7,8 @@
 		<script src="socket_server/node_modules/socket.io/node_modules/socket.io-client/socket.io.js"></script>
 		<script src="js/config.js"></script>
 		<script src="js/calloverscript.js"></script>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<style>
 			.btn-finish
 			{
