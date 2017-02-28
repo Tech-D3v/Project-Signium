@@ -1,8 +1,6 @@
 <?php
   require_once "php/session.php";
 	require_once "php/database.php";
-	require_once "navbar.php";	
-	require_once "php/cdn.php";
 	$array = null;
 	$names = DB::query('SELECT * FROM names ORDER BY Yeargroup ASC, Surname');
 	foreach($names as $row)
@@ -17,11 +15,17 @@
 <!DOCTYPE html>
 <html>
 	<head>
+    <?php
+      require_once "navbar.php";
+      require_once "php/cdn.php";
+    ?>
 		<link rel="stylesheet" href="css/style.css" type="text/css"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
-	
+
 	<body>
-		
+
 		<div class="container">
     <h1 class="page-header">Edit a Student</h1>
     <form role="form" method="post" action="php/send.php">
@@ -33,13 +37,13 @@
       </div>
       <div class="form-group">
         <label class="control-label" for="pwd">Surname:</label>
-        <div class=""> 
+        <div class="">
           <input type="text" class="form-control" id="surname" name="surname" placeholder="Enter Surname" <?php echo "value=".$array["Surname"]; ?>  ></input>
         </div>
       </div>
       <div class="form-group">
         <label class="control-label" for="nickname">Preferred Name:</label>
-        <div class=""> 
+        <div class="">
           <input type="text" class="form-control" id="nickname" name="nickname" placeholder="Enter Preferred Name" <?php echo "value=".$array["Nickname"]; ?> ></input>
         </div>
       </div>
@@ -57,17 +61,17 @@
       </div>
       <div class="form-group">
         <label class="control-label" for="usercode">Usercode:</label>
-        <div class=""> 
+        <div class="">
           <input type="text" class="form-control" id="usercode" name="usercode" placeholder="Enter Usercode" <?php echo "value=".$array["Usercode"]; ?> ></input>
         </div>
       </div>
        <div class="form-group">
         <label class="control-label" for="password">Password:</label>
-        <div class=""> 
+        <div class="">
           <input type="text" class="form-control" id="password" name="password" placeholder="Enter Password"></input>
         </div>
       </div>
-      <div class="form-group"> 
+      <div class="form-group">
         <div class="">
           <input type="submit" value="Finish" class="btn btn-default"/>
         </div>

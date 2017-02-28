@@ -9,7 +9,7 @@
 
 	<body>
 		  <div class="container">
-    <form class="form-signin" action="newpassword.php" method="post">       
+    <form class="form-signin" action="newpassword.php" method="post">
       <h2 class="form-signin-heading">Change Password</h2>
       <div class="form-group">
       <input type="password" class="form-control" name="oldpassword" placeholder="Old Password" required="true" autofocus="" /></div><div class="form-group">
@@ -19,9 +19,11 @@
       </div><div class="form-group">
       <button class="btn btn-lg btn-primary btn-block" type="submit">Change Password</button>
       </div>
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
       <?php
       if(isset($_GET["passwordnomatch"]))
-      { 
+      {
       if($_GET["passwordnomatch"] == true)
       {
       echo '<div class="alert alert-danger fade in">
@@ -31,7 +33,7 @@
 	}
 }
 if(isset($_GET["passwordnomatchserver"]))
-      { 
+      {
       if($_GET["passwordnomatchserver"] == true)
       {
       echo '<div class="alert alert-danger fade in">
@@ -39,7 +41,7 @@ if(isset($_GET["passwordnomatchserver"]))
         <strong>Incorrect Password</strong>Old Password Does Not Match</div>';
   }
 }
-		?>  
+		?>
     </form>
   </div>
 	</body>

@@ -5,6 +5,8 @@
       require "php/cdn.php";
       require "navbar.php";
     ?>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
   <div class="container">
@@ -18,13 +20,13 @@
       </div>
       <div class="form-group">
         <label class="control-label" for="surname">Surname:</label>
-        <div class=""> 
+        <div class="">
           <input type="text" class="form-control" id="surname" name="surname" placeholder="Enter Surname"/>
         </div>
       </div>
       <div class="form-group">
         <label class="control-label" for="nickname">Preferred Name:</label>
-        <div class=""> 
+        <div class="">
           <input type="text" class="form-control" id="nickname" name="nickname" placeholder="Enter Preferred Name"/>
         </div>
       </div>
@@ -42,17 +44,17 @@
       </div>
       <div class="form-group">
         <label class="control-label" for="usercode">Usercode:</label>
-        <div class=""> 
+        <div class="">
           <input type="text" class="form-control" id="usercode" name="usercode" placeholder="Enter Usercode" ></input>
         </div>
       </div>
        <div class="form-group">
         <label class="control-label" for="password">Password:</label>
-        <div class=""> 
+        <div class="">
           <input type="text" class="form-control" id="password" name="password" placeholder="Enter Password"></input>
         </div>
       </div>
-      <div class="form-group"> 
+      <div class="form-group">
         <div class="">
           <input type="submit" value="Finish" class="btn btn-default"/>
         </div>

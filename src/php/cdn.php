@@ -1,20 +1,14 @@
 <?php
-	require_once 'dependencies/Mobile_Detect.php';
-	$detect = new Mobile_Detect;
-
-	echo '<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	echo '
 	<!-- jQuery library -->
-	<script src="php/dependencies/jquery.js"></script>
+	<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
 	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="php/dependencies/bootstrap-3.3.6-dist/css/bootstrap.min.css">
-	<!-- Latest compiled JavaScript -->
-	<script src="php/dependencies/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>';
-	require_once "dependencies/meekrodb.2.3.class.php";
-	echo '<script src="php/dependencies/jquery.textfill.min.js"></script>';
-	echo '<script src="php/dependencies/jquery.textfill.js"></script>';
-	//echo '<script src="dependencies/jquery.fittext.js"></script>';
-	echo '<script src="php/dependencies/jscolor.js"></script>';
-	echo '<script src="php/dependencies/jscolor.min.js"></script>';
-	//echo '<link href="cssreset.css" rel="stylesheet" type="text/css"/>';
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>';
+	echo '<script src="js/dependencies/jquery.textfill.min.js"></script>';
+	echo '<script src="js/dependencies/jscolor.min.js"></script>';
 ?>

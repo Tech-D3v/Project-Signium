@@ -1,14 +1,17 @@
-<?php
-	require_once "php/cdn.php";
-	require_once "navbar.php";
-?>
+
 <!DOCTYPE html>
 <html>
 	<head>
+		<?php
+			require_once "php/cdn.php";
+			require_once "navbar.php";
+		?>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script>
 		var amount = 50;
 			$(document).ready(function(){
-				
+
 
     			showMore(0);
 
@@ -34,13 +37,13 @@
 						});
 						element += '</tbody></table><input type="button" class="btn btn-default" value="Show More" onclick="showMore(50);"/></div>';
 												$("#maindiv").html(element);
-						$("#filter").on("input", function(){ 
+						$("#filter").on("input", function(){
 							showMore(0, $("#filter").val());
 						});
 					}
 				});
 			}
- 
+
 
 		</script>
 	</head>

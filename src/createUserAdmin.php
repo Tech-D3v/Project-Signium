@@ -1,18 +1,19 @@
-<?php
-	require_once "php/cdn.php";
-  require_once "php/session.php";
-    require_once "navbaradmin.php";
-  require_once 'php/dependencies/meekrodb.2.3.class.php';
-  $database = new MeekroDB("localhost", "root", "", "users");
-?>
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
 
 	<body>
+		<?php
+			require_once "php/cdn.php";
+		  require_once "php/session.php";
+		    require_once "navbaradmin.php";
+		  $database = new MeekroDB("localhost", "root", "", "users");
+		?>
 		  <div class="container">
-    <form class="form-signin" action="php/newuser.php" method="post">       
+    <form class="form-signin" action="php/newuser.php" method="post">
       <h2 class="form-signin-heading">Create a New User</h2>
       <div class="form-group">
       <input type="text" class="form-control" name="username" placeholder="Username" required="true" autofocus="" /></div><div class="form-group">
@@ -24,7 +25,7 @@
             <option>HM</option>
             <option>Tutor</option>
       </select> </div><div class="form-group">
-      <?php 
+      <?php
         if($adminUser)
         {
            echo '<select class="form-control" id="house" name="house">';
@@ -40,7 +41,7 @@
       <button class="btn btn-lg btn-primary btn-block" type="submit">Create Account</button> <br/>
       <?php
       if(isset($_GET["usernametaken"]))
-      { 
+      {
         if($_GET["usernametaken"] == true)
         {
           echo '<div class="alert alert-danger fade in">
@@ -50,7 +51,7 @@
     	  }
       }
       if(isset($_GET["passwordnomatch"]))
-      { 
+      {
         if($_GET["passwordnomatch"] == true)
         {
           echo '<div class="alert alert-danger fade in">
@@ -59,7 +60,7 @@
         </div>';
         }
       }
-		?>  
+		?>
     </form>
   </div>
 	</body>
