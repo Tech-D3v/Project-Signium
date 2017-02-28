@@ -53,7 +53,7 @@
           echo '<li class="divider"></li>
           <li><a href="adminpage.php">ADMIN</a></li>
         </ul></li>'; } ?>
-      <li><a href="php/view.php?house=<?php echo $userHouse; ?>">Signing in DEVICE VIEW</a></li>
+      <li><a href="view.php?house=<?php echo $userHouse; ?>">Signing in DEVICE VIEW</a></li>
       <li><a href="edituser.php">Edit User</a></li>
       <?php echo '<li><a>Welcome, '.$prefName.'</a></li>'?>
       <li><a href="logout.php"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>

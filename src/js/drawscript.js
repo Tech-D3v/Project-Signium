@@ -183,7 +183,7 @@ socket.on("redraw", function(fHouse) {
 
 function setUpButtons(maxHeight = parseInt($(".cardspace").css("height"))) {
     $(".buttonspace").css("height", maxHeight + "px");
-    var totalCards = $(".btn-selector-parent").size() + 1;
+    var totalCards = $(".btn-selector-parent").length + 1;
     var height = Math.floor(maxHeight / totalCards);
     var halfheight = Math.floor(height / 2);
     $(".btn-selector-parent").css("padding-top", halfheight + "px");
@@ -195,7 +195,7 @@ function setUpButtons(maxHeight = parseInt($(".cardspace").css("height"))) {
 
 
 function setUpGrid() {
-    var totalCards = $(".name").size();
+    var totalCards = $(".name").length;
     var maxWidth = 130;
     var minWidth = 120;
     var screenWidth = parseInt($(".namespace").css("width"));
