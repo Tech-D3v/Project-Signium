@@ -17,7 +17,7 @@
   </script>
 	<script src="js/drawscript.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
   <script>
   var socket = io.connect(CONFIG_NODE_IP);
   var house = "<?php
