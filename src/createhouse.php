@@ -3,7 +3,7 @@
   <head>
     <?php
       require "php/cdn.php";
-      require "navbar.php";
+      require "navbaradmin.php";
     ?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">

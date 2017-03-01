@@ -6,7 +6,6 @@
   require_once "php/cdn.php";
   require_once "php/session.php";
   require_once "navbaradmin.php";
-  require_once 'php/dependencies/meekrodb.2.3.class.php';
   $database = new MeekroDB("localhost", "root", "", "users");
   if($adminUser)
   {

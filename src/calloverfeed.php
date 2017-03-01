@@ -1,9 +1,10 @@
-  <?php
-      require_once "php/cdn.php";
-  ?>
+
   <!DOCTYPE html>
   <html>
   	<head>
+      <?php
+          require_once "php/cdn.php";
+      ?>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
   		<script>

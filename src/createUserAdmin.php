@@ -9,7 +9,7 @@
 		<?php
 			require_once "php/cdn.php";
 		  require_once "php/session.php";
-		    require_once "navbaradmin.php";
+		  require_once "navbaradmin.php";
 		  $database = new MeekroDB("localhost", "root", "", "users");
 		?>
 		  <div class="container">

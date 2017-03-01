@@ -2,9 +2,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-       <?php
-      require "php/cdn.php";
-      require "navbar.php";
+    <?php
+      require_once "php/cdn.php";
+      require_once "navbar.php";
     ?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">

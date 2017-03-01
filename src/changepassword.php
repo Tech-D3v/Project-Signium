@@ -1,10 +1,12 @@
-<?php
-	require_once "php/cdn.php";
-  require_once "php/session.php";
-?>
+
 <!DOCTYPE html>
 <html>
 	<head>
+		<?php
+			require_once "php/cdn.php";
+		  require_once "php/session.php";
+			require_once "navbar.php";
+		?>
 	</head>
 
 	<body>
