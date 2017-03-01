@@ -1,6 +1,5 @@
 <?php
 	require_once "php/session.php";
-	require_once 'php/dependencies/meekrodb.2.3.class.php';
 	$database = new MeekroDB("localhost", "root", "", "users");
 	$query_raw = $database->queryRaw("SELECT * FROM users WHERE ID=%s", $_SESSION["user_id"]);
 	$row = $query_raw->fetch_assoc();

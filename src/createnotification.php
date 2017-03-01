@@ -1,24 +1,25 @@
-<?php
-  require_once "php/session.php";
-    require_once "php/database.php";
-    require_once "navbar.php";
-    require_once "php/cdn.php";
-    $array = array();
-    $names = DB::query('SELECT * FROM names ORDER BY Yeargroup ASC, Surname');
-    foreach ($names as $row) {
-        foreach ($_POST["selected"] as $select) {
-            if ($select == $row["ID"]) {
-                $array[] = $row["ID"];
-            }
-        }
-    }
-  $jsonArray = json_encode($array);
-  echo '<p id="array" style="visibility: hidden">'.$jsonArray.'</p>';
-  ?>
 
 <!DOCTYPE html>
 <html>
 	<head>
+    <?php
+      require_once "php/session.php";
+        require_once "php/database.php";
+        require_once "navbar.php";
+        require_once "php/cdn.php";
+        $array = array();
+        $names = DB::query('SELECT * FROM names ORDER BY Yeargroup ASC, Surname');
+        foreach ($names as $row) {
+            foreach ($_POST["selected"] as $select) {
+                if ($select == $row["ID"]) {
+                    $array[] = $row["ID"];
+                }
+            }
+        }
+      $jsonArray = json_encode($array);
+      echo '<p id="array" style="visibility: hidden">'.$jsonArray.'</p>';
+      ?>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="socket_server/node_modules/socket.io/node_modules/socket.io-client/socket.io.js"></script>

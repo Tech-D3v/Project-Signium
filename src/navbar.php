@@ -1,4 +1,6 @@
-<?php require_once "php/session.php";
+<?php
+  require_once "php/session.php";
+  require_once "php/database.php";
   $database = new MeekroDB("localhost", "root", "", "users");
   $database->query("SELECT * FROM users WHERE House=%s", $userHouse);
   $count = $database->count();
