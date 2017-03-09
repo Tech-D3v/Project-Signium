@@ -5,13 +5,15 @@
 <link rel="apple-touch-icon" sizes="72x72" href="icons/ipad_non_retina.png" />
 <link rel="apple-touch-icon" sizes="114x114" href="icons/iphone_retina.png" />
 <link rel="apple-touch-icon" sizes="144x144" href="icons/ipad_retina.png" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="css/style.css"/>
 	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script src="../socket_server/node_modules/socket.io/node_modules/socket.io-client/socket.io.js"></script>
 	<script type="text/javascript" src="js/cookie.js"></script>
-	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-title" content="Wellington College Sign In System">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="white">
 	<script type="text/javascript">
 	var socket = io.connect("http://10.11.0.23:8081");
 	if(getCookie("student_logged_in") != "loggedin")
@@ -52,18 +54,19 @@
 							break;
 				}
 			}
-			var html = "";
+			var html = '<ul id="drawer">';
 			noGroupList.forEach(function(location){
-					html += '<a id="' + location.id + '"  style="color: #FFFFFF; background-color: ' + location.colour + '" class="btn-selector">' + location.name + '</a><br/>'; 
+					html += '<li><a id="' + location.id + '"  style="color: #FFFFFF; background-color: ' + location.colour + '" class="btn-selector">' + location.name + '</a></li>';
 			});
-			html += '<h4> In College</h4>';
+			html += '<li><h4> In College</h4></li>';
 			inCollegeList.forEach(function(location){
-					html += '<a id="' + location.id + '"  style="color: #FFFFFF; background-color: ' + location.colour + '" class="btn-selector">' + location.name + '</a><br/>'; 
+					html += '<li><a id="' + location.id + '"  style="color: #FFFFFF; background-color: ' + location.colour + '" class="btn-selector">' + location.name + '</a></li>';
 			});
-			html += '<h4>Out of College</h4>';
+			html += '<li><h4>Out of College</h4></li>';
 			outOfCollegeList.forEach(function(location){
-					html += '<a id="' + location.id + '" style="color: #FFFFFF; background-color: ' + location.colour + '" class="btn-selector">' + location.name + '</a><br/>'; 
+					html += '<li><a id="' + location.id + '" style="color: #FFFFFF; background-color: ' + location.colour + '" class="btn-selector">' + location.name + '</a></li>';
 			});
+			html += '</ul>';
 			$(".buttonspace").html(html);
 			$.each(json, function(key, val){
 				$("#" + val.ID).click(function(){
@@ -123,7 +126,7 @@
 			$(".student-card").css("border-color", index.colour)
 		});
 		socket.on("update_student_location", function(packet)
-		{	
+		{
 			console.log(mainID);
 			console.log(packet);
 			packet = JSON.parse(packet);
@@ -131,7 +134,7 @@
 			{
 				if(packet.id == mainID)
 				{
-				
+
 					$(".location").text(packet.location);
 					$(".date").text(packet.date);
 					$(".time").text(packet.time);
@@ -154,26 +157,34 @@
 			setCookie("student_id", "", 365);
 			window.location.href = "login.php";
 		}
+
+
+		function responseNav() {
+    var x = document.getElementById("mainNav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
 	</script>
 	<title>WCSIS</title>
 </head>
 <body>
-	<p class="logout" onclick="logout();">Logout</p>
-	<div class="row" style="height: 100%;">
-		<div class="col-9 col-m-6" style="height: 100%;">
-			<div class="student-card">
-				<p class="name">Name</p>
-				<p class="nickname">Nickname</p>
-				<p class="yeargroup">Yeargroup</p>
-				<p class="location">Location</p>
-				<p class="date">Date</p>
-				<p class="time">Time</p>
-				<p class="house">House</p>
-			</div>
+	<div class="topnav" id="mainNav">
+		<a class="logout" onclick="logout();">Logout</a>
+  	<a href="javascript:void(0);" class="icon" onclick="responseNav()">&#9776;</a>
+	</div>
+	<div class="container-fluid">
+	<div class="container" id="page-content">
+
+
 		</div>
-		<div class="col-3 col-m-6">
-			<div class="buttonspace">
-			</div>
+		<input type="checkbox" id="drawer-toggle" name="drawer-toggle"/>
+		<label for="drawer-toggle" id="drawer-toggle-label"></label>
+		<header>Header</header>
+			<nav class="buttonspace">
+			</nav>
 		</div>
 </body>
 </html>
