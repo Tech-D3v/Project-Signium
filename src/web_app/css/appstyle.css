@@ -1,0 +1,106 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: #f3f3f3;
+}
+
+.subheader {
+    text-align: center;
+}
+
+.btn-select-locations {
+    text-align: center;
+    width: 100%;
+    background-color: #BBBBBB;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+
+.btn-selector {
+    width: 100%;
+    margin-top: 1%;
+    padding-top: 10%;
+    padding-bottom: 10%;
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+    text-align: center;
+}
+
+.student-card {
+    margin: 2% 0;
+    border-radius: 50px;
+    border: 7px solid;
+    border-color: #000000;
+    position: relative;
+    height: 60vh;
+    width: 30%;
+    margin-left: 35%;
+    margin-right: 35%;
+    text-align: center;
+    align-content: center;
+    background-color: white;
+}
+
+.date {
+    position: absolute;
+    left: -30%;
+    top: 5%;
+    width: 100%;
+}
+
+.time {
+    width: 100%;
+    position: absolute;
+    left: -30%;
+    top: 15%;
+}
+
+.name {
+    position: absolute;
+    left: 0%;
+    width: 100%;
+    top: 40%;
+}
+
+.nickname {
+    position: absolute;
+    width: 100%;
+    left: 0%;
+    top: 50%;
+}
+
+.yeargroup {
+    position: absolute;
+    top: 75%;
+    left: 0%;
+    width: 100%;
+}
+
+.location {
+    position: absolute;
+    width: 100%;
+    top: 85%;
+    left: 0%;
+}
+
+.house {
+    position: absolute;
+    width: 100%;
+    left: 30%;
+    top: 5%;
+}
+
+@media screen and (max-width: 767px) {
+    .btn-select-locations {
+        padding-top: 10%;
+        padding-bottom: 10%;
+    }
+    .student-card {
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+}

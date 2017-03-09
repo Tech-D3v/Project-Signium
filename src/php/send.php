@@ -5,8 +5,7 @@
 	{
 		if($password == "")
 		{
-			
-			DB::replace('names', array('ID' => $_POST["id"], 'Firstname' => htmlspecialchars($_POST["firstname"]),'Surname' => htmlspecialchars($_POST["surname"]), 'Nickname' => htmlspecialchars($_POST["nickname"]), 'Yeargroup' => $_POST["yeargroup"], 'Location' => $_POST["location"], 'Usercode' => $_POST["usercode"]));
+				DB::update('names', array('Firstname' => htmlspecialchars($_POST["firstname"]),'Surname' => htmlspecialchars($_POST["surname"]), 'Nickname' => htmlspecialchars($_POST["nickname"]), 'Yeargroup' => $_POST["yeargroup"], 'Location' => $_POST["location"], 'Usercode' => $_POST["usercode"]), "ID=%i", $_POST["id"]);
 		}
 		else
 		{
@@ -23,3 +22,4 @@
 	header("location:../mainpage.php");
 
 ?>
+z
