@@ -139,34 +139,35 @@
 		</div>
 		<div class="row">
 			<div class="col-sm-6">
-				<button type="button"  class="btn btn-default" onclick="deselect();" style="width: 100%; margin-top: 5%;"
+				<button type="button"  class="btn btn-default" onclick="deselect();" style="width: 100%; margin-top: 5%; overflow: ellipsis;"
 				>Deselect All</button>
 			</div>
 			<div class="col-sm-6">
-				<button type="button"  class="btn btn-default" onclick="select('3rd');" style="width: 100%; margin-top: 5%;"
+				<button type="button"  class="btn btn-default" onclick="select('3rd');" style="width: 100%; margin-top: 5%;  overflow: ellipsis;"
 				>Select All 3rd</button>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-sm-6">
-				<button type="button"  class="btn btn-default" onclick="select('4th');" style="width: 100%; margin-top: 5%;"
+				<button type="button"  class="btn btn-default" onclick="select('4th');" style="width: 100%; margin-top: 5%;  overflow: ellipsis;"
 				>Select All 4th</button>
 			</div>
 			<div class="col-sm-6">
-				<button type="button"  class="btn btn-default" onclick="select('5th');" style="width: 100%; margin-top: 5%;"
+				<button type="button"  class="btn btn-default" onclick="select('5th');" style="width: 100%; margin-top: 5%;  overflow: ellipsis;"
 				>Select All 5th</button>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-sm-6">
-				<button type="button"  class="btn btn-default" onclick="select('LVIth');" style="width: 100%; margin-top: 5%;"
+				<button type="button"  class="btn btn-default" onclick="select('LVIth');" style="width: 100%; margin-top: 5%;  overflow: ellipsis;"
 				>Select All LVIth</button>
 			</div>
 			<div class="col-sm-6">
-				<button type="button"  class="btn btn-default" onclick="select('UVIth');" style="width: 100%; margin-top: 5%;"
+				<button type="button"  class="btn btn-default" onclick="select('UVIth');" style="width: 100%; margin-top: 5%;  overflow: ellipsis;"
 				>Select All UVIth</button>
 			</div>
 		</div>
+    <button type="button" class="btn btn-default" onclick="triggerRedraw();" style="width: 100%; margin-top 5%;  overflow: ellipsis;">Trigger Redraw</button>
 			<h4 style="margin-top: 5%; text-align: center; ">Locations</h4>
 			 <div class="buttonspace"></div>
 			</div>

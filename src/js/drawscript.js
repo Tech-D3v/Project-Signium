@@ -9,6 +9,10 @@ function drawLoadingIcon(id) {
     $(id).html('<div class="ajax-loading-icon"></div>');
 }
 
+function triggerRedraw(){
+  socket.emit("redraw", house);
+}
+
 function redraw() {
     $.ajax({
         url: "php/draw.php",
